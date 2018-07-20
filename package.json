@@ -1,0 +1,24 @@
+{
+  "name": "@progre/webpack-config",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/progre/webpack-config.git"
+  },
+  "author": "progre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/progre/webpack-config/issues"
+  },
+  "homepage": "https://github.com/progre/webpack-config#readme",
+  "dependencies": {
+    "copy-webpack-plugin": "^4.5.2",
+    "uglify-save-license": "^0.4.1",
+    "uglifyjs-webpack-plugin": "^1.2.7"
+  }
+}
