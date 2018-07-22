@@ -21,7 +21,7 @@ function getCommon(isProduction) {
   return {
     devtool: isProduction ? false : 'inline-source-map',
     module: getTSLoader(isProduction),
-    node: { __dirname: true, __filename: true },
+    node: { __dirname: false, __filename: true },
     resolve: { extensions: ['.ts', '.tsx', '.js'] },
     watchOptions: { ignored: /node_modules|dist/ },
   };
