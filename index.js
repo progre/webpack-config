@@ -54,7 +54,7 @@ function toEntry(entriesPath, entries) {
  * @param {boolean} isProduction
  * @param {string} entriesPath 'path/to/'
  * @param {string[]} entries ['file.ts']
- * @param {string} copyPath
+ * @param {string?} copyPath
  */
 function client(isProduction, entriesPath, entries, copyPath) {
   return {
@@ -63,7 +63,7 @@ function client(isProduction, entriesPath, entries, copyPath) {
     output: { filename: `${entriesPath}/[name].js` },
     plugins: [
       ...(
-        !copy ? [] : [createCopyWebpackPlugin(copyPath)]
+        !copyPath == null ? [] : [createCopyWebpackPlugin(copyPath)]
       ),
       ...(
         !isProduction ? [] : [createUglifyJsPlugin()]
