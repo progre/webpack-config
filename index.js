@@ -54,16 +54,16 @@ function toEntry(entriesPath, entries) {
  * @param {boolean} isProduction
  * @param {string} entriesPath 'path/to/'
  * @param {string[]} entries ['file.ts']
- * @param {boolean} copy
+ * @param {string} copyPath
  */
-function client(isProduction, entriesPath, entries, copy) {
+function client(isProduction, entriesPath, entries, copyPath) {
   return {
     ...getCommon(isProduction),
     entry: toEntry(entriesPath, entries),
     output: { filename: `${entriesPath}/[name].js` },
     plugins: [
       ...(
-        !copy ? [] : [createCopyWebpackPlugin('public/')]
+        !copy ? [] : [createCopyWebpackPlugin(copyPath)]
       ),
       ...(
         !isProduction ? [] : [createUglifyJsPlugin()]
@@ -92,11 +92,11 @@ function server(isProduction, entriesPath, entries) {
  * @param {boolean} isProduction
  * @param {string} entriesPath 'path/to/'
  * @param {string[]} entries ['file.ts']
- * @param {boolean} copy
+ * @param {string} copyPath
  */
-function electronRenderer(isProduction, entriesPath, entries, copy) {
+function electronRenderer(isProduction, entriesPath, entries, copyPath) {
   return {
-    ...client(isProduction, entriesPath, entries, copy),
+    ...client(isProduction, entriesPath, entries, copyPath),
     externals: /^electron$/,
     output: { filename: `${entriesPath}/[name].js`, libraryTarget: 'commonjs2' },
     target: 'electron-renderer',
