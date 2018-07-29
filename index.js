@@ -63,7 +63,7 @@ function client(isProduction, entriesPath, entries, copyPath) {
     output: { filename: `${entriesPath}/[name].js` },
     plugins: [
       ...(
-        !copyPath == null ? [] : [createCopyWebpackPlugin(copyPath)]
+        copyPath == null ? [] : [createCopyWebpackPlugin(copyPath)]
       ),
       ...(
         !isProduction ? [] : [createUglifyJsPlugin()]
