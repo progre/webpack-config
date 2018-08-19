@@ -10,7 +10,10 @@ function getTSLoader(isProduction) {
       use: [
         {
           loader: 'ts-loader',
-          options: { compilerOptions: { sourceMap: !isProduction } }
+          options: {
+            compilerOptions: { sourceMap: !isProduction },
+            onlyCompileBundledFiles: true,
+          }
         }
       ]
     }]
